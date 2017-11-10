@@ -1,0 +1,24 @@
+{
+	"name": "sellastica/admin-ui",
+	"type": "project",
+	"homepage": "https://github.com/sellastica/admin-ui",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Tomáš Krejčí",
+			"homepage": "http://www.sellastica.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"nette/utils": "^2.4",
+		"nette/forms": "^2.4"
+	},
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Sellastica\\AdminUI\\": "src/"
+		}
+	}
+}
