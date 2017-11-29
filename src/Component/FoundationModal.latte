@@ -1,0 +1,22 @@
+<div id="{$id}" class="{ifset $size}{$size} {/ifset}reveal{ifset $ajax} reveal-ajax{/ifset}"
+	 data-reveal data-close-on-click="false" data-animation-in="scale-in-down"
+	 {ifset $ajaxUrl}data-ajax-url="{$ajaxUrl}"{/ifset}>
+
+	<div class="modal-heading row columns">
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		{ifset $title}
+			<h2>{_$title}</h2>
+		{/ifset}
+	</div>
+	<div class="modal-content">
+		{ifset $content}
+			{if !empty($noescape)}
+				{$content|noescape}
+			{else}
+				{$content}
+			{/if}
+		{/ifset}
+	</div>
+</div>

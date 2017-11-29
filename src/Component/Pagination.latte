@@ -1,0 +1,63 @@
+{if $pagination->getPageCount() > 1}
+	<div class="row">
+		<div class="column small-12 large-6">
+			{*<a href="#" class="button hollow">Next 20</a>*}
+		</div>
+
+		<div class="column small-12 large-6">
+			<ul class="pagination float-right" role="navigation" aria-label="Pagination" data-items-count="{$pagination->getItemCount()}">
+
+				{* previous page *}
+				{if $pagination->getPreviousPage()}
+					<li class="pagination-previous">
+						<a href="{$presenter->link('this', ['page' => $pagination->getPreviousPage()])}" aria-label="Next page">
+							<i class="fa fa-arrow-left"></i><span class="show-for-sr">Previous page</span>
+						</a>
+					</li>
+				{/if}
+
+				{* pages *}
+				{var $firstPage = max($pagination->getFirstPage(), $pagination->getPage() - 3)}
+				{var $lastPage = min($pagination->getLastPage(), $pagination->getPage() + 3)}
+
+				{if $firstPage > 1}
+					{foreach [1] as $i}
+						<li><a href="{$presenter->link('this', ['page' => $i])}" aria-label="Page {$i}">{$i}</a></li>
+					{/foreach}
+					{if $firstPage > 2}
+						<li class="ellipsis" aria-hidden="true"><i class="fa fa-ellipsis-h"></i></li>
+					{/if}
+				{/if}
+
+				{var $pages = range($firstPage, $lastPage)}
+				{foreach $pages as $i}
+					{if $pagination->getPage() == $i}
+						<li class="current">
+							<span class="show-for-sr">You're on page</span> {$i}
+						</li>
+					{else}
+						<li><a href="{$presenter->link('this', ['page' => $i])}" aria-label="Page {$i}">{$i}</a></li>
+					{/if}
+				{/foreach}
+
+				{if $lastPage < $pagination->getLastPage()}
+					{if $lastPage < $pagination->getLastPage() - 1}
+						<li class="ellipsis" aria-hidden="true"><i class="fa fa-ellipsis-h"></i></li>
+					{/if}
+					{foreach [$pagination->getLastPage()] as $i}
+						<li><a href="{$presenter->link('this', ['page' => $i])}" aria-label="Page {$i}">{$i}</a></li>
+					{/foreach}
+				{/if}
+
+				{* next page *}
+				{if $pagination->getNextPage()}
+					<li class="pagination-next">
+						<a href="{$presenter->link('this', ['page' => $pagination->getNextPage()])}" aria-label="Next page">
+							<span class="show-for-sr">Next page</span><i class="fa fa-arrow-right"></i>
+						</a>
+					</li>
+				{/if}
+			</ul>
+		</div>
+	</div>
+{/if}

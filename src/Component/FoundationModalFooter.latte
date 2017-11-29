@@ -1,0 +1,28 @@
+<div class="modal-footer">
+	<div class="row align-justify">
+		{if isset($cancelOnly) && $cancelOnly}
+			<div class="column text-right">
+				<a class="button hollow" data-close>{_admin.globals.close}</a>
+			</div>
+		{else}
+			<div class="column small-order-2">
+				{if !isset($submit) || $submit}
+					<button n:name="submit" class="button button-wide button-submittable float-right">
+						<i class="fa fa-spinner fa-spin"></i>
+						<span class="button-label">
+							{_admin.globals.buttons.save}
+						</span>
+					</button>
+				{/if}
+			</div>
+			<div class="column large-7">
+				{if !isset($cancel) || $cancel}
+					<a class="button hollow" data-close>{_admin.globals.cancel}</a>
+				{/if}
+				{if !isset($remove) || $remove}
+					{input remove class => 'button hollow alert-on-hover'}
+				{/if}
+			</div>
+		{/if}
+	</div>
+</div>
