@@ -1,5 +1,5 @@
 <?php
-namespace Core\UI\Admin\Components;
+namespace Sellastica\AdminUI\Component;
 
 use Sellastica\AdminUI\Page\AdminPage;
 
