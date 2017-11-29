@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Facades;
+namespace Sellastica\AdminUI\User\Mapping;
 
 use Sellastica\Api\Mapping\TApiRepository;
 use Sellastica\AdminUI\User\Entity\IAdminUserRepository;

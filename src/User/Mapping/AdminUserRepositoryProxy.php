@@ -7,7 +7,7 @@ use Sellastica\AdminUI\User\Entity\IAdminUserRepository;
 use Sellastica\Entity\Mapping\RepositoryProxy;
 
 /**
- * @method Facades\AdminUserRepository getRepository()
+ * @method \Sellastica\AdminUI\User\Mapping\AdminUserRepository getRepository()
  */
 class AdminUserRepositoryProxy extends RepositoryProxy implements IAdminUserRepository
 {
