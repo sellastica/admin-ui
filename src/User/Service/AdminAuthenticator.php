@@ -6,7 +6,7 @@ use Nette\Localization\ITranslator;
 use Sellastica\AdminUI\User\Entity\AdminUser;
 use Sellastica\AdminUI\User\Entity\IAdminUserRepository;
 
-class AdminAuthenticator extends \Sellastica\Core\AbstractAuthenticator
+class AdminAuthenticator extends \Sellastica\Core\Model\AbstractAuthenticator
 {
 	/** @var \Sellastica\Localization\Model\LocalizationAccessor */
 	private $localizationAccessor;

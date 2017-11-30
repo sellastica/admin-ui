@@ -3,7 +3,7 @@ namespace Sellastica\AdminUI\User\Model;
 
 use Nette;
 use Sellastica\AdminUI\User\Entity\AdminUser;
-use Sellastica\Core\FactoryAccessor;
+use Sellastica\Core\Model\FactoryAccessor;
 use Sellastica\Entity\EntityManager;
 
 class AdminUserAccessor extends FactoryAccessor
