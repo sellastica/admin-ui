@@ -10,7 +10,7 @@ class MenuItem
 	private $title;
 	/** @var Url */
 	private $url;
-	/** @var string */
+	/** @var string|null */
 	private $icon;
 	/** @var string|null */
 	private $scope;
@@ -72,9 +72,9 @@ class MenuItem
 	}
 
 	/**
-	 * @return string
+	 * @return string|null
 	 */
-	public function getIcon(): string
+	public function getIcon(): ?string
 	{
 		return $this->icon;
 	}

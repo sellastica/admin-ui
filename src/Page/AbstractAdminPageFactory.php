@@ -2,7 +2,6 @@
 namespace Sellastica\AdminUI\Page;
 
 use Nette\Localization\ITranslator;
-use Nette\Utils\Strings;
 use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Http\Url;
 use Sellastica\LinkFactory\LinkFactory;
@@ -35,11 +34,6 @@ abstract class AbstractAdminPageFactory
 	 */
 	public function fromPresenter(string $presenter): AdminPage
 	{
-		if (Strings::startsWith($presenter, ':')
-			|| Strings::endsWith($presenter, ':')) {
-			throw new \InvalidArgumentException("Invalid presenter name $presenter. Name should by like Module:Presenter");
-		}
-
 		$setting = $this->getPageSettings($presenter);
 		if (isset($setting['parent'])) {
 			$parent = $this->fromPresenter($setting['parent']);
