@@ -67,8 +67,8 @@ abstract class AbstractAdminPageFactory
 		);
 		$adminPage->setIcon($setting['icon']);
 		$adminPage->setParent($parent);
-		$adminPage->setModule($setting['module']);
-		$adminPage->setB2b($setting['b2b']);
+		$adminPage->setModule($setting['module'] ?? null);
+		$adminPage->setB2b($setting['b2b'] ?? false);
 
 		return $adminPage;
 	}
