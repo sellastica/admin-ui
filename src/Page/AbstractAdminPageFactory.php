@@ -12,19 +12,24 @@ abstract class AbstractAdminPageFactory
 	private $linkFactory;
 	/** @var ITranslator */
 	private $translator;
+	/** @var \Application\Service\ApplicationService */
+	private $applicationService;
 
 
 	/**
 	 * @param LinkFactory $linkFactory
 	 * @param ITranslator $translator
+	 * @param \Application\Service\ApplicationService $applicationService
 	 */
 	public function __construct(
 		LinkFactory $linkFactory,
-		ITranslator $translator
+		ITranslator $translator,
+		\Application\Service\ApplicationService $applicationService
 	)
 	{
 		$this->linkFactory = $linkFactory;
 		$this->translator = $translator;
+		$this->applicationService = $applicationService;
 	}
 
 	/**
@@ -52,12 +57,17 @@ abstract class AbstractAdminPageFactory
 	 */
 	private function getAdminPage(array $setting, string $presenter, AdminPage $parent = null): AdminPage
 	{
+		if (!empty($setting['applicationSlug'])) {
+			$app = $this->applicationService->getApplication($setting['applicationSlug']);
+		}
+
 		$adminPage = new AdminPage(
 			$presenter,
 			$this->translator->translate($setting['title']),
 			new Url($this->linkFactory->link($presenter . ':')),
 			$setting['scope'] ?? null,
-			$setting['role'] && AdminUserRole::isRole($setting['role']) ? new AdminUserRole($setting['role']) : null
+			$setting['role'] && AdminUserRole::isRole($setting['role']) ? new AdminUserRole($setting['role']) : null,
+			$app ?? null
 		);
 		$adminPage->setIcon($setting['icon']);
 		$adminPage->setParent($parent);

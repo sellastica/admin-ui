@@ -29,6 +29,8 @@ class AdminPage
 	private $module;
 	/** @var bool */
 	private $b2b;
+	/** @var null|\Sellastica\App\Entity\App */
+	private $app;
 
 
 	/**
@@ -37,13 +39,15 @@ class AdminPage
 	 * @param \Sellastica\Http\Url $url
 	 * @param string|null $scope
 	 * @param AdminUserRole $role
+	 * @param \Sellastica\App\Entity\App|null $app
 	 */
 	public function __construct(
 		string $presenter,
 		string $title,
 		Url $url,
 		string $scope = null,
-		AdminUserRole $role = null
+		AdminUserRole $role = null,
+		\Sellastica\App\Entity\App $app = null
 	)
 	{
 		$this->presenter = $presenter;
@@ -51,6 +55,7 @@ class AdminPage
 		$this->url = $url;
 		$this->scope = $scope;
 		$this->role = $role;
+		$this->app = $app;
 	}
 
 	/**
@@ -203,5 +208,13 @@ class AdminPage
 	public function setB2b(bool $b2b)
 	{
 		$this->b2b = $b2b;
+	}
+
+	/**
+	 * @return null|\Sellastica\App\Entity\App
+	 */
+	public function getApp(): ?\Sellastica\App\Entity\App
+	{
+		return $this->app;
 	}
 }

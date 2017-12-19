@@ -1,12 +1,12 @@
 <?php
 namespace Sellastica\AdminUI\User\Entity;
 
-use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Entity\IBuilder;
 use Sellastica\Entity\TBuilder;
+use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Identity\Model\Contact;
-use Sellastica\Identity\Model\InvalidLogin;
 use Sellastica\Identity\Model\Password;
+use Sellastica\Identity\Model\InvalidLogin;
 
 /**
  * @see AdminUser
@@ -17,7 +17,7 @@ class AdminUserBuilder implements IBuilder
 
 	/** @var AdminUserRole */
 	private $role;
-	/** @var \Sellastica\Identity\Model\Contact */
+	/** @var Contact */
 	private $contact;
 	/** @var string|null */
 	private $bio;
@@ -27,9 +27,9 @@ class AdminUserBuilder implements IBuilder
 	private $permissions = [];
 	/** @var bool */
 	private $visible = true;
-	/** @var \Sellastica\Identity\Model\Password|null */
+	/** @var Password|null */
 	private $password;
-	/** @var \Sellastica\Identity\Model\InvalidLogin */
+	/** @var InvalidLogin */
 	private $invalidLogin;
 
 	/**
@@ -134,7 +134,7 @@ class AdminUserBuilder implements IBuilder
 	}
 
 	/**
-	 * @return \Sellastica\Identity\Model\Password|null
+	 * @return Password|null
 	 */
 	public function getPassword()
 	{
@@ -152,7 +152,7 @@ class AdminUserBuilder implements IBuilder
 	}
 
 	/**
-	 * @return \Sellastica\Identity\Model\InvalidLogin
+	 * @return InvalidLogin
 	 */
 	public function getInvalidLogin(): InvalidLogin
 	{
