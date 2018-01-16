@@ -25,6 +25,15 @@ class LabelFactory
 
 	/**
 	 * @param string $title
+	 * @return Html
+	 */
+	public function warning(string $title): Html
+	{
+		return $this->create($title, 'warning');
+	}
+
+	/**
+	 * @param string $title
 	 * @param string|null $class
 	 * @return Html
 	 */
