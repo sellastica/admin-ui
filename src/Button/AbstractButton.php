@@ -8,6 +8,8 @@ abstract class AbstractButton
 	protected $id;
 	/** @var string|Html */
 	protected $title;
+	/** @var string|null */
+	protected $caption;
 	/** @var string|Html */
 	protected $icon;
 	/** @var string|null */
@@ -40,6 +42,24 @@ abstract class AbstractButton
 	public function getTitle()
 	{
 		return $this->title;
+	}
+
+	/**
+	 * @return null|string
+	 */
+	public function getCaption(): ?string
+	{
+		return $this->caption;
+	}
+
+	/**
+	 * @param null|string $caption
+	 * @return \Sellastica\AdminUI\Button\AbstractButton
+	 */
+	public function setCaption(?string $caption)
+	{
+		$this->caption = $caption;
+		return $this;
 	}
 
 	/**

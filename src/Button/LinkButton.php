@@ -51,6 +51,10 @@ class LinkButton extends AbstractButton
 			$el->setHtml(Html::el('i')->class('fa ' . $this->icon));
 		}
 
+		if ($this->caption) {
+			$el->title($this->caption);
+		}
+
 		if ($this->openInNewWindow) {
 			$el->setAttribute('target', '_blank');
 		}
