@@ -59,7 +59,7 @@ class AdminUserDao extends Dao
 	/**
 	 * @return \Sellastica\Entity\Entity\EntityCollection|AdminUserCollection
 	 */
-	protected function getEmptyCollection(): EntityCollection
+	public function getEmptyCollection(): EntityCollection
 	{
 		return new AdminUserCollection();
 	}
