@@ -11,6 +11,8 @@ class AdminPage
 	private $title;
 	/** @var string|null */
 	private $subtitle;
+	/** @var string|null */
+	private $description;
 	/** @var Html|null */
 	private $html;
 	/** @var Url */
@@ -96,6 +98,22 @@ class AdminPage
 	public function setSubtitle(?string $subtitle)
 	{
 		$this->subtitle = $subtitle;
+	}
+
+	/**
+	 * @return null|string
+	 */
+	public function getDescription(): ?string
+	{
+		return $this->description;
+	}
+
+	/**
+	 * @param null|string $description
+	 */
+	public function setDescription(?string $description): void
+	{
+		$this->description = $description;
 	}
 
 	/**

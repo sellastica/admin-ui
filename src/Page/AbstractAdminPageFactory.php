@@ -73,6 +73,9 @@ abstract class AbstractAdminPageFactory
 		$adminPage->setParent($parent);
 		$adminPage->setModule($setting['module'] ?? null);
 		$adminPage->setB2b($setting['b2b'] ?? false);
+		if (!empty($setting['description'])) {
+			$adminPage->setDescription($this->translator->translate($setting['description']));
+		}
 
 		return $adminPage;
 	}

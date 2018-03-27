@@ -8,6 +8,8 @@ class MenuItem
 {
 	/** @var string */
 	private $title;
+	/** @var string|null */
+	private $description;
 	/** @var Url */
 	private $url;
 	/** @var string|null */
@@ -112,13 +114,30 @@ class MenuItem
 	}
 
 	/**
+	 * @return null|string
+	 */
+	public function getDescription(): ?string
+	{
+		return $this->description;
+	}
+
+	/**
+	 * @param null|string $description
+	 */
+	public function setDescription(?string $description): void
+	{
+		$this->description = $description;
+	}
+
+	/**
 	 * @param AdminPage $page
 	 * @return MenuItem
 	 */
 	public static function fromAdminPage(AdminPage $page)
 	{
-		return new self(
-			$page->getTitle(), $page->getUrl(), $page->getIcon(), $page->getScope()
-		);
+		$item = new self($page->getTitle(), $page->getUrl(), $page->getIcon(), $page->getScope());
+		$item->setDescription($page->getDescription());
+
+		return $item;
 	}
 }
