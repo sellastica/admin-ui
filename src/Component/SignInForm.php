@@ -20,6 +20,7 @@ class SignInForm extends BaseControl
 	/** @var FormFactory */
 	private $formFactory;
 
+
 	/**
 	 * @param Nette\Security\User $user
 	 * @param AdminAuthenticator $authenticator
@@ -48,7 +49,7 @@ class SignInForm extends BaseControl
 			->addRule(Form::EMAIL);
 		$form->addPassword('password', 'Password')
 			->setRequired();
-		$form->addSubmit('submit', 'Sign in');
+		$form->addSubmit('submit', 'admin.sign.submit_label');
 		$form->onSuccess[] = [$this, 'processForm'];
 
 		return $form;
