@@ -9,6 +9,15 @@ class LabelFactory
 	 * @param string $title
 	 * @return Html
 	 */
+	public function success(string $title): Html
+	{
+		return $this->create($title, 'success');
+	}
+
+	/**
+	 * @param string $title
+	 * @return Html
+	 */
 	public function hidden(string $title): Html
 	{
 		return $this->create($title, 'hidden');
@@ -30,6 +39,15 @@ class LabelFactory
 	public function warning(string $title): Html
 	{
 		return $this->create($title, 'warning');
+	}
+
+	/**
+	 * @param string $title
+	 * @return Html
+	 */
+	public function alert(string $title): Html
+	{
+		return $this->create($title, 'alert');
 	}
 
 	/**
