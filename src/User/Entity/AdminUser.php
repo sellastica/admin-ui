@@ -100,14 +100,6 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	/**
 	 * @return bool
 	 */
-	public function isAdministrator(): bool
-	{
-		return $this->role->isAdministrator();
-	}
-
-	/**
-	 * @return bool
-	 */
 	public function isVisible(): bool
 	{
 		return $this->visible;
@@ -129,7 +121,9 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	 */
 	public function hasPermissionsTo(string $scope): bool
 	{
-		return $this->isAdministrator() || !empty($this->permissions[$scope]);
+		return $this->role->isSuperAdministrator()
+			|| $this->role->isAdministrator()
+			|| !empty($this->permissions[$scope]);
 	}
 
 	/**
@@ -162,7 +156,8 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	 */
 	public function hasNoPermissions(): bool
 	{
-		return !$this->isAdministrator()
+		return !$this->role->isSuperAdministrator()
+			&& !$this->role->isAdministrator()
 			&& !sizeof(array_filter($this->getPermissions()));
 	}
 

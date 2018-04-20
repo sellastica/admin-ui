@@ -17,6 +17,7 @@ class Authorizator extends Permission implements Nette\Security\IAuthorizator
 		$this->addRole(self::GUEST);
 		$this->addRole(AdminUserRole::STANDARD_USER);
 		$this->addRole(AdminUserRole::ADMINISTRATOR);
+		$this->addRole(AdminUserRole::SUPER_ADMINISTRATOR);
 		//resources
 		foreach (AdminPageFactory::getAllPageSettings() as $presenter => $pageSetting) {
 			//detail page
@@ -50,8 +51,9 @@ class Authorizator extends Permission implements Nette\Security\IAuthorizator
 	 */
 	public function allowResources(AdminUser $adminUser)
 	{
-		if ($adminUser->isAdministrator()) {
-			//administrator has all privilleges by default
+		//administrator has all privilleges by default
+		if ($adminUser->getRole()->isSuperAdministrator()
+			|| $adminUser->getRole()->isAdministrator()) {
 			return;
 		}
 

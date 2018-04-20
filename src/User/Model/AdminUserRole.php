@@ -5,11 +5,13 @@ class AdminUserRole
 {
 	/** @var array */
 	private static $roles = [
+		self::SUPER_ADMINISTRATOR => 'admin.accounts.super_administrator',
 		self::ADMINISTRATOR => 'admin.accounts.administrator',
 		self::STANDARD_USER => 'admin.accounts.standard_user',
 	];
 
-	const ADMINISTRATOR = 'administrator',
+	const SUPER_ADMINISTRATOR = 'super_administrator',
+		ADMINISTRATOR = 'administrator',
 		STANDARD_USER = 'standard_user',
 		GUEST = 'guest';
 
@@ -47,6 +49,14 @@ class AdminUserRole
 	public function getTitle(): string
 	{
 		return $this->title;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isSuperAdministrator(): bool
+	{
+		return $this->role === self::SUPER_ADMINISTRATOR;
 	}
 
 	/**
