@@ -1,64 +1,62 @@
 <?php
 namespace Sellastica\AdminUI\Label;
 
-use Nette\Utils\Html;
-
 class LabelFactory
 {
 	/**
 	 * @param string $title
-	 * @return Html
+	 * @param string|null $class
+	 * @return \Nette\Utils\Html
 	 */
-	public function success(string $title): Html
+	public function create(string $title, string $class = null): \Nette\Utils\Html
+	{
+		return \Nette\Utils\Html::el('span')
+			->class("label $class")
+			->setText($title);
+	}
+
+	/**
+	 * @param string $title
+	 * @return \Nette\Utils\Html
+	 */
+	public function success(string $title): \Nette\Utils\Html
 	{
 		return $this->create($title, 'success');
 	}
 
 	/**
 	 * @param string $title
-	 * @return Html
+	 * @return \Nette\Utils\Html
 	 */
-	public function hidden(string $title): Html
+	public function hidden(string $title): \Nette\Utils\Html
 	{
 		return $this->create($title, 'hidden');
 	}
 
 	/**
 	 * @param string $title
-	 * @return Html
+	 * @return \Nette\Utils\Html
 	 */
-	public function secondary(string $title): Html
+	public function secondary(string $title): \Nette\Utils\Html
 	{
 		return $this->create($title, 'secondary');
 	}
 
 	/**
 	 * @param string $title
-	 * @return Html
+	 * @return \Nette\Utils\Html
 	 */
-	public function warning(string $title): Html
+	public function warning(string $title): \Nette\Utils\Html
 	{
 		return $this->create($title, 'warning');
 	}
 
 	/**
 	 * @param string $title
-	 * @return Html
+	 * @return \Nette\Utils\Html
 	 */
-	public function alert(string $title): Html
+	public function alert(string $title): \Nette\Utils\Html
 	{
 		return $this->create($title, 'alert');
-	}
-
-	/**
-	 * @param string $title
-	 * @param string|null $class
-	 * @return Html
-	 */
-	protected function create(string $title, string $class = null): Html
-	{
-		return Html::el('span')
-			->class("label $class")
-			->setText($title);
 	}
 }

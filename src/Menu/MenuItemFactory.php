@@ -5,17 +5,17 @@ class MenuItemFactory
 {
 	/** @var \Admin\Model\AdminPageFactory */
 	private $adminPageFactory;
-	/** @var \Application\Application\ModuleService */
+	/** @var \Project\Service\ModuleService */
 	private $moduleService;
 
 
 	/**
 	 * @param \Admin\Model\AdminPageFactory $adminPageFactory
-	 * @param \Application\Application\ModuleService $moduleService
+	 * @param \Project\Service\ModuleService $moduleService
 	 */
 	public function __construct(
 		\Admin\Model\AdminPageFactory $adminPageFactory,
-		\Application\Application\ModuleService $moduleService
+		\Project\Service\ModuleService $moduleService
 	)
 	{
 		$this->adminPageFactory = $adminPageFactory;
