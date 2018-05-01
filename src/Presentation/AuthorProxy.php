@@ -20,6 +20,22 @@ class AuthorProxy extends ProxyEntity
 	/**
 	 * @return string
 	 */
+	public function getFirst_name(): string
+	{
+		return $this->parent->getContact()->getFirstName();
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLast_name(): string
+	{
+		return $this->parent->getContact()->getLastName();
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getFull_name()
 	{
 		return $this->parent->getContact()->getFullName();
@@ -64,7 +80,9 @@ class AuthorProxy extends ProxyEntity
 	{
 		return [
 			'id',
+			'first_name',
 			'full_name',
+			'last_name',
 			'email',
 			'bio',
 			'homepage',

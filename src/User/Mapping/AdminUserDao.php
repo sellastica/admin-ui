@@ -47,7 +47,7 @@ class AdminUserDao extends Dao
 	protected function getBuilder($data, $first = null, $second = null): IBuilder
 	{
 		$role = new AdminUserRole($data->role);
-		$contact = new Contact($data->fullName, new Email($data->email), $data->phone);
+		$contact = new Contact($data->firstName, $data->lastName, new Email($data->email), $data->phone);
 		$data->password = new Password($data->password);
 		$invalidLogin = new InvalidLogin($data->lastInvalidLogin, $data->invalidLoginCount);
 		$data->permissions = (array)json_decode($data->permissions);

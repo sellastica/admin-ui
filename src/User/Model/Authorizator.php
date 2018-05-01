@@ -35,6 +35,7 @@ class Authorizator extends Permission implements Nette\Security\IAuthorizator
 
 		//all permissions allowed to administrator
 		$this->allow(AdminUserRole::ADMINISTRATOR);
+		$this->allow(AdminUserRole::SUPER_ADMINISTRATOR);
 	}
 
 	/**
