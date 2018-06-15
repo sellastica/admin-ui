@@ -1,8 +1,8 @@
 <?php
 namespace Sellastica\AdminUI\User\Mapping;
 
-use Sellastica\Api\Mapping\TApiRepository;
 use Sellastica\AdminUI\User\Entity\IAdminUserRepository;
+use Sellastica\Api\Mapping\TApiRepository;
 use Sellastica\Entity\Mapping\Repository;
 
 /**

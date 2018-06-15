@@ -1,11 +1,11 @@
 <?php
 namespace Sellastica\AdminUI\User\Mapping;
 
-use Sellastica\Api\Mapping\TApiDao;
 use App\Model\Mappers;
 use Sellastica\AdminUI\User\Entity\AdminUserBuilder;
 use Sellastica\AdminUI\User\Entity\AdminUserCollection;
 use Sellastica\AdminUI\User\Model\AdminUserRole;
+use Sellastica\Api\Mapping\TApiDao;
 use Sellastica\Entity\Entity\EntityCollection;
 use Sellastica\Entity\IBuilder;
 use Sellastica\Entity\Mapping\Dao;

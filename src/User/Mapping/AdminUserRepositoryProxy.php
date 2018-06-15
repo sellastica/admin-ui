@@ -1,9 +1,9 @@
 <?php
 namespace Sellastica\AdminUI\User\Mapping;
 
-use Sellastica\Api\Mapping\TApiRepositoryProxy;
 use App\Model\Facades;
 use Sellastica\AdminUI\User\Entity\IAdminUserRepository;
+use Sellastica\Api\Mapping\TApiRepositoryProxy;
 use Sellastica\Entity\Mapping\RepositoryProxy;
 
 /**

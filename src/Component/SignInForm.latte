@@ -1,11 +1,30 @@
 {form signInForm}
-	<div class="input-group">
-		<span class="input-group-label"><i class="fa fa-envelope"></i></span>
-		{input email class => 'input-group-field'}
+	{* login *}
+	<div class="grid-x grid-margin-x">
+		<div class="cell">
+			<div class="input-group">
+				<span class="input-group-label"><i class="fa fa-envelope"></i></span>
+				{input email class => 'input-group-field'}
+			</div>
+		</div>
 	</div>
-	<div class="input-group">
-		<span class="input-group-label"><i class="fa fa-key"></i></span>
-		{input password class => 'input-group-field'}
+
+	{* password *}
+	<div class="grid-x grid-margin-x">
+		<div class="cell">
+			<div class="input-group">
+				<span class="input-group-label"><i class="fa fa-key"></i></span>
+				{input password class => 'input-group-field'}
+			</div>
+		</div>
 	</div>
-	{input submit class => 'button large expanded'}
+
+	{* submit button *}
+	<div class="grid-x grid-margin-x">
+		<div class="cell">
+			<button n:name="submit" class="button submit large expanded">
+				{_admin.sign.submit_label}
+			</button>
+		</div>
+	</div>
 {/form}
