@@ -1,12 +1,12 @@
 <?php
 namespace Sellastica\AdminUI\User\Entity;
 
-use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Entity\IBuilder;
 use Sellastica\Entity\TBuilder;
+use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Identity\Model\Contact;
-use Sellastica\Identity\Model\InvalidLogin;
 use Sellastica\Identity\Model\Password;
+use Sellastica\Identity\Model\InvalidLogin;
 
 /**
  * @see AdminUser

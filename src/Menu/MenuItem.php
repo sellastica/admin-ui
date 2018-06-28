@@ -20,6 +20,8 @@ class MenuItem
 	private $active;
 	/** @var array|MenuItem[] */
 	private $subitems = [];
+	/** @var \Sellastica\App\Entity\App|null */
+	private $app;
 
 
 	/**
@@ -127,6 +129,22 @@ class MenuItem
 	public function setDescription(?string $description): void
 	{
 		$this->description = $description;
+	}
+
+	/**
+	 * @return null|\Sellastica\App\Entity\App
+	 */
+	public function getApp(): ?\Sellastica\App\Entity\App
+	{
+		return $this->app;
+	}
+
+	/**
+	 * @param null|\Sellastica\App\Entity\App $app
+	 */
+	public function setApp(?\Sellastica\App\Entity\App $app): void
+	{
+		$this->app = $app;
 	}
 
 	/**
