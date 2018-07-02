@@ -1,17 +1,16 @@
 <?php
 namespace Sellastica\AdminUI\Button;
 
-use Nette\Utils\Html;
-
 class DropdownButtonItem
 {
-	/** @var Html|string */
+	/** @var \Nette\Utils\Html|string */
 	private $title;
 	/** @var string */
 	private $href;
 
+
 	/**
-	 * @param string|Html $title
+	 * @param string|\Nette\Utils\Html $title
 	 * @param string $href
 	 */
 	public function __construct(string $title, string $href)
@@ -25,7 +24,15 @@ class DropdownButtonItem
 	 */
 	public function __toString(): string
 	{
-		return (string) Html::el('a')->href($this->href)
+		return (string)$this->toHtml();
+	}
+
+	/**
+	 * @return \Nette\Utils\Html
+	 */
+	public function toHtml(): \Nette\Utils\Html
+	{
+		return \Nette\Utils\Html::el('a')->href($this->href)
 			->setText($this->title);
 	}
 }

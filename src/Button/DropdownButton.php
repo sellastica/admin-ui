@@ -5,7 +5,7 @@ use Nette\Utils\Html;
 
 class DropdownButton extends LinkButton
 {
-	/** @var array */
+	/** @var DropdownButtonItem[] */
 	private $items = [];
 
 
@@ -47,7 +47,14 @@ class DropdownButton extends LinkButton
 	 */
 	public function render(): string
 	{
-		$button = parent::render();
+		return (string)$this->toHtml();
+	}
+
+	/**
+	 * @return Html
+	 */
+	private function getItemsHtml(): Html
+	{
 		$ul = Html::el('ul', [
 			'class' => 'menu dropdown-pane button-dropdown bottom no-padding',
 			'id' => $this->id,
@@ -57,9 +64,23 @@ class DropdownButton extends LinkButton
 		]);
 		foreach ($this->items as $item) {
 			$li = $ul->create('li');
-			$li->addHtml((string)$item);
+			$li->addHtml($item->toHtml());
 		}
 
-		return $button . (string)$ul;
+		return $ul;
+	}
+
+	/**
+	 * @return Html
+	 */
+	public function toHtml(): Html
+	{
+		$el = Html::el('div');
+		$el->addHtml(parent::toHtml());
+		if ($this->items) {
+			$el->addHtml($this->getItemsHtml());
+		}
+
+		return $el;
 	}
 }
