@@ -68,7 +68,7 @@ class ButtonFactory
 	public function trash(string $url, string $class = null)
 	{
 		$title = Html::el('i')->class('fa fa-trash-o');
-		return $this->link($title, $url, $class ?? 'hollow');
+		return $this->link($title, $url, $class ?? 'hollow alert-on-hover confirm');
 	}
 
 	/**
