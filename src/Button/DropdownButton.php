@@ -7,6 +7,8 @@ class DropdownButton extends LinkButton
 {
 	/** @var DropdownButtonItem[] */
 	private $items = [];
+	/** @var string|null */
+	private $dropdownClass;
 
 
 	/**
@@ -21,6 +23,16 @@ class DropdownButton extends LinkButton
 		$this->addClass('dropdown')
 			->addClass('hollow')
 			->addData('toggle', $this->id);
+	}
+
+	/**
+	 * @param null|string $dropdownClass
+	 * @return $this
+	 */
+	public function setDropdownClass(?string $dropdownClass): DropdownButton
+	{
+		$this->dropdownClass = $dropdownClass;
+		return $this;
 	}
 
 	/**
@@ -56,7 +68,7 @@ class DropdownButton extends LinkButton
 	private function getItemsHtml(): Html
 	{
 		$ul = Html::el('ul', [
-			'class' => 'menu dropdown-pane button-dropdown bottom no-padding',
+			'class' => 'menu dropdown-pane button-dropdown bottom no-padding ' . $this->dropdownClass,
 			'id' => $this->id,
 			'data-dropdown' => true,
 			'data-close-on-click' => 'true',
