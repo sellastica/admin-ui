@@ -58,6 +58,7 @@ abstract class AbstractButton
 	 */
 	public function setCaption(?string $caption)
 	{
+		$this->data['tooltip'] = true;
 		$this->caption = $caption;
 		return $this;
 	}
