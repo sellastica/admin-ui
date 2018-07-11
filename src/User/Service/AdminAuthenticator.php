@@ -4,7 +4,6 @@ namespace Sellastica\AdminUI\User\Service;
 use Nette;
 use Nette\Localization\ITranslator;
 use Sellastica\AdminUI\User\Entity\AdminUser;
-use Sellastica\AdminUI\User\Entity\IAdminUserRepository;
 
 class AdminAuthenticator extends \Sellastica\Core\Model\AbstractAuthenticator
 {
@@ -17,7 +16,6 @@ class AdminAuthenticator extends \Sellastica\Core\Model\AbstractAuthenticator
 	/**
 	 * @param Nette\Security\User $user
 	 * @param Nette\Http\Session $session
-	 * @param \Sellastica\AdminUI\User\Entity\IAdminUserRepository $repository
 	 * @param \Sellastica\Entity\EntityManager $em
 	 * @param \Sellastica\Localization\Model\LocalizationAccessor $localizationAccessor
 	 * @param ITranslator $translator
@@ -25,13 +23,12 @@ class AdminAuthenticator extends \Sellastica\Core\Model\AbstractAuthenticator
 	public function __construct(
 		Nette\Security\User $user,
 		Nette\Http\Session $session,
-		IAdminUserRepository $repository,
 		\Sellastica\Entity\EntityManager $em,
 		\Sellastica\Localization\Model\LocalizationAccessor $localizationAccessor,
 		ITranslator $translator
 	)
 	{
-		parent::__construct($user, $session, $repository, $em);
+		parent::__construct($user, $session, $em->getRepository(AdminUser::class), $em);
 		$this->localizationAccessor = $localizationAccessor;
 		$this->translator = $translator;
 	}
