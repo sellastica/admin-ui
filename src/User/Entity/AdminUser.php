@@ -92,7 +92,7 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	/**
 	 * @param AdminUserRole $role
 	 */
-	protected function setRole(AdminUserRole $role)
+	public function setRole(AdminUserRole $role)
 	{
 		$this->role = $role;
 	}

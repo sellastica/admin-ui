@@ -62,7 +62,7 @@ class SignInForm extends BaseControl
 	public function processForm(Form $form, $values)
 	{
 		try {
-			$this->user->setExpiration('+ 2 days', false);
+			$this->user->setExpiration('+ 14 days', false);
 			$this->authenticator->login([$values->email, $values->password]);
 			$this->onSuccess($form);
 		} catch (Nette\Security\AuthenticationException $e) {
