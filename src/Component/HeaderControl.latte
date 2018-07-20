@@ -3,3 +3,8 @@
 <title>{$adminPage->getTitle()|firstUpper}</title>
 <link rel="stylesheet" href="{$basePath}/assets/css/app.css?{filemtime(WWW_DIR . '/backend/assets/css/app.css')}">
 <script src="https://assets.sellastica.com/web/production/jquery/3.2.1/jquery.js"></script>
+<style>
+	label.optional::after {
+		content: " ({_admin.globals.optional})";
+	}
+</style>
