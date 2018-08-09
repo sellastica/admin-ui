@@ -6,6 +6,9 @@ use Sellastica\AdminUI\User\Entity\AdminUser;
 use Sellastica\Core\Model\FactoryAccessor;
 use Sellastica\Entity\EntityManager;
 
+/**
+ * @method AdminUser get
+ */
 class AdminUserAccessor extends FactoryAccessor
 {
 	/** @var Nette\Security\User */
