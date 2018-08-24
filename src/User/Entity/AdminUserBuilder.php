@@ -27,6 +27,8 @@ class AdminUserBuilder implements IBuilder
 	private $permissions = [];
 	/** @var bool */
 	private $visible = true;
+	/** @var int|null */
+	private $projectId;
 	/** @var Password|null */
 	private $password;
 	/** @var InvalidLogin */
@@ -130,6 +132,24 @@ class AdminUserBuilder implements IBuilder
 	public function visible(bool $visible = true)
 	{
 		$this->visible = $visible;
+		return $this;
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getProjectId()
+	{
+		return $this->projectId;
+	}
+
+	/**
+	 * @param int|null $projectId
+	 * @return $this
+	 */
+	public function projectId(int $projectId = null)
+	{
+		$this->projectId = $projectId;
 		return $this;
 	}
 

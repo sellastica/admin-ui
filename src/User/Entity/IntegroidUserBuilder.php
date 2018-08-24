@@ -19,8 +19,6 @@ class IntegroidUserBuilder implements IBuilder
 	private $role;
 	/** @var Contact */
 	private $contact;
-	/** @var int|null */
-	private $projectId;
 	/** @var string|null */
 	private $bio;
 	/** @var string|null */
@@ -29,6 +27,8 @@ class IntegroidUserBuilder implements IBuilder
 	private $permissions = [];
 	/** @var bool */
 	private $visible = true;
+	/** @var int|null */
+	private $projectId;
 	/** @var Password|null */
 	private $password;
 	/** @var InvalidLogin */
@@ -61,24 +61,6 @@ class IntegroidUserBuilder implements IBuilder
 	public function getContact(): Contact
 	{
 		return $this->contact;
-	}
-
-	/**
-	 * @return int|null
-	 */
-	public function getProjectId()
-	{
-		return $this->projectId;
-	}
-
-	/**
-	 * @param int|null $projectId
-	 * @return $this
-	 */
-	public function projectId(int $projectId = null)
-	{
-		$this->projectId = $projectId;
-		return $this;
 	}
 
 	/**
@@ -150,6 +132,24 @@ class IntegroidUserBuilder implements IBuilder
 	public function visible(bool $visible = true)
 	{
 		$this->visible = $visible;
+		return $this;
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getProjectId()
+	{
+		return $this->projectId;
+	}
+
+	/**
+	 * @param int|null $projectId
+	 * @return $this
+	 */
+	public function projectId(int $projectId = null)
+	{
+		$this->projectId = $projectId;
 		return $this;
 	}
 

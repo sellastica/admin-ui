@@ -31,6 +31,8 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	protected $permissions = [];
 	/** @var bool @optional */
 	protected $visible = true;
+	/** @var int|null @optional */
+	protected $projectId;
 
 
 	/**
@@ -163,6 +165,22 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
+	 * @return int|null
+	 */
+	public function getProjectId(): ?int
+	{
+		return $this->projectId;
+	}
+
+	/**
+	 * @param int|null $projectId
+	 */
+	public function setProjectId(?int $projectId): void
+	{
+		$this->projectId = $projectId;
+	}
+
+	/**
 	 * @return null|\Sellastica\Project\Entity\Project
 	 */
 	public function getProject(): ?\Sellastica\Project\Entity\Project
@@ -183,6 +201,7 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 				'role' => $this->role->getRole(),
 				'visible' => $this->visible,
 				'permissions' => json_encode($this->permissions),
+				'projectId' => $this->projectId,
 			]
 		);
 	}
