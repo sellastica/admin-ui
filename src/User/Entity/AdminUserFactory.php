@@ -11,10 +11,11 @@ use Sellastica\Entity\IBuilder;
 class AdminUserFactory extends EntityFactory
 {
 	/**
-	 * @param \Sellastica\Entity\Entity\IEntity $entity
+	 * @param \Sellastica\Entity\Entity\IEntity|AdminUser $entity
 	 */
 	public function doInitialize(IEntity $entity)
 	{
+		$entity->setRelationService(new AdminUserRelations($entity, $this->em));
 	}
 
 	/**

@@ -1,7 +1,6 @@
 <?php
 namespace Sellastica\AdminUI\User\Entity;
 
-use Api\Payload\Account;
 use Sellastica\AdminUI\Presentation\AuthorProxy;
 use Sellastica\AdminUI\User\Model\AdminUserRole;
 use Sellastica\Api\Model\IPayloadable;
@@ -15,21 +14,23 @@ use Sellastica\Twig\Model\ProxyConverter;
 /**
  * @generate-builder
  * @see AdminUserBuilder
+ *
+ * @property AdminUserRelations $relationService
  */
 class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 {
 	use TAbstractEntity;
 
 	/** @var string|null @optional */
-	private $bio;
+	protected $bio;
 	/** @var string|null @optional */
-	private $homepage;
+	protected $homepage;
 	/** @var AdminUserRole @required */
-	private $role;
+	protected $role;
 	/** @var array @optional */
-	private $permissions = [];
+	protected $permissions = [];
 	/** @var bool @optional */
-	private $visible = true;
+	protected $visible = true;
 
 
 	/**
@@ -162,6 +163,14 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
+	 * @return null|\Sellastica\Project\Entity\Project
+	 */
+	public function getProject(): ?\Sellastica\Project\Entity\Project
+	{
+		return $this->relationService->getProject();
+	}
+
+	/**
 	 * @return array
 	 */
 	public function toArray(): array
@@ -187,10 +196,10 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
-	 * @return Account
+	 * @return \Api\Payload\Account
 	 */
-	public function toPayloadObject(): Account
+	public function toPayloadObject(): \Api\Payload\Account
 	{
-		return new Account($this);
+		return new \Api\Payload\Account($this);
 	}
 }

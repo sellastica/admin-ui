@@ -1,33 +1,28 @@
 <?php
 namespace Sellastica\AdminUI\User\Model;
 
-use Nette;
-use Sellastica\AdminUI\User\Entity\AdminUser;
-use Sellastica\Core\Model\FactoryAccessor;
-use Sellastica\Entity\EntityManager;
-
 /**
- * @method AdminUser get
+ * @method \Sellastica\AdminUI\User\Entity\AdminUser get
  */
-class AdminUserAccessor extends FactoryAccessor
+class AdminUserAccessor extends \Sellastica\Core\Model\FactoryAccessor
 {
-	/** @var Nette\Security\User */
+	/** @var \Nette\Security\User */
 	private $user;
 	/** @var Authorizator */
 	private $authorizator;
-	/** @var EntityManager */
+	/** @var \Sellastica\Entity\EntityManager */
 	private $em;
 
 
 	/**
-	 * @param Nette\Security\User $user
+	 * @param \Nette\Security\User $user
 	 * @param Authorizator $authorizator
-	 * @param EntityManager $em
+	 * @param \Sellastica\Entity\EntityManager $em
 	 */
 	public function __construct(
-		Nette\Security\User $user,
+		\Nette\Security\User $user,
 		Authorizator $authorizator,
-		EntityManager $em
+		\Sellastica\Entity\EntityManager $em
 	)
 	{
 		$this->user = $user;
@@ -36,9 +31,9 @@ class AdminUserAccessor extends FactoryAccessor
 	}
 
 	/**
-	 * @return AdminUser|null
+	 * @return \Sellastica\AdminUI\User\Entity\AdminUser|null
 	 */
-	public function create()
+	public function create(): ?\Sellastica\AdminUI\User\Entity\AdminUser
 	{
 		if (!$this->user->getId() || $this->user->getStorage()->getNamespace() !== 'admin') {
 			return null;
@@ -48,9 +43,9 @@ class AdminUserAccessor extends FactoryAccessor
 	}
 
 	/**
-	 * @return AdminUser|null
+	 * @return \Sellastica\AdminUI\User\Entity\AdminUser|null
 	 */
-	public function createForFrontend(): ?AdminUser
+	public function createForFrontend(): ?\Sellastica\AdminUI\User\Entity\AdminUser
 	{
 		$currentStorageNamespace = $this->user->getStorage()->getNamespace();
 		$this->user->getStorage()->setNamespace('admin');
@@ -61,11 +56,11 @@ class AdminUserAccessor extends FactoryAccessor
 	}
 
 	/**
-	 * @return AdminUser|null
+	 * @return \Sellastica\AdminUI\User\Entity\AdminUser|null
 	 */
-	private function getAdminUser(): ?AdminUser
+	private function getAdminUser(): ?\Sellastica\AdminUI\User\Entity\AdminUser
 	{
-		$adminUser = $this->em->getRepository(AdminUser::class)->find($this->user->getId());
+		$adminUser = $this->em->getRepository(\Sellastica\AdminUI\User\Entity\AdminUser::class)->find($this->user->getId());
 		if (isset($adminUser)) {
 			$this->authorizator->allowResources($adminUser);
 			$this->user->setAuthorizator($this->authorizator);

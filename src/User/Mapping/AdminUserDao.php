@@ -1,7 +1,6 @@
 <?php
 namespace Sellastica\AdminUI\User\Mapping;
 
-use App\Model\Mappers;
 use Sellastica\AdminUI\User\Entity\AdminUserBuilder;
 use Sellastica\AdminUI\User\Entity\AdminUserCollection;
 use Sellastica\AdminUI\User\Model\AdminUserRole;
