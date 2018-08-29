@@ -87,7 +87,7 @@ class DropdownButton extends LinkButton
 	 */
 	public function toHtml(): Html
 	{
-		$el = Html::el('div');
+		$el = Html::el('span');
 		$el->addHtml(parent::toHtml());
 		if ($this->items) {
 			$el->addHtml($this->getItemsHtml());

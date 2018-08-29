@@ -45,6 +45,14 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
+	 * @return bool
+	 */
+	public static function isIdGeneratedByStorage(): bool
+	{
+		return true;
+	}
+
+	/**
 	 * @return string|null
 	 */
 	public function getBio(): ?string
