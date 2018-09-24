@@ -10,7 +10,11 @@
 					<button n:name="submit" class="button button-wide button-submittable float-right">
 						<i class="fa fa-spinner fa-spin"></i>
 						<span class="button-label">
-							{_admin.globals.buttons.save}
+							{ifset $submitLabel}
+								{$submitLabel}
+							{else}
+								{_admin.globals.buttons.save}
+							{/ifset}
 						</span>
 					</button>
 				{/if}

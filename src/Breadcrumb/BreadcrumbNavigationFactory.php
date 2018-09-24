@@ -58,7 +58,10 @@ class BreadcrumbNavigationFactory
 
 		$parents = [];
 		while ($parent = $adminPage->getParent()) {
-			$parents[] = $parent;
+			if ($parent->isInBreadcrumb()) {
+				$parents[] = $parent;
+			}
+
 			$adminPage = $parent;
 		}
 

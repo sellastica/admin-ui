@@ -33,6 +33,8 @@ class AdminPage
 	private $b2b;
 	/** @var null|\Sellastica\App\Entity\App */
 	private $app;
+	/** @var bool */
+	private $inBreadcrumb = true;
 
 
 	/**
@@ -234,5 +236,21 @@ class AdminPage
 	public function getApp(): ?\Sellastica\App\Entity\App
 	{
 		return $this->app;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isInBreadcrumb(): bool
+	{
+		return $this->inBreadcrumb;
+	}
+
+	/**
+	 * @param bool $inBreadcrumb
+	 */
+	public function setInBreadcrumb(bool $inBreadcrumb): void
+	{
+		$this->inBreadcrumb = $inBreadcrumb;
 	}
 }
