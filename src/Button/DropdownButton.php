@@ -37,13 +37,13 @@ class DropdownButton extends LinkButton
 
 	/**
 	 * @param string $title
-	 * @param string $href
-	 * @return self
+	 * @param string|null $href
+	 * @return DropdownButtonItem
 	 */
-	public function addItem(string $title, string $href): self
+	public function addItem(string $title, string $href = null): DropdownButtonItem
 	{
-		$this->items[] = new DropdownButtonItem($title, $href);
-		return $this;
+		$this->items[] = $item = new DropdownButtonItem($title, $href);
+		return $item;
 	}
 
 	/**
