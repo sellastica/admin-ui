@@ -8,7 +8,7 @@ class DropdownButtonItem
 	/** @var string|null */
 	private $href;
 	/** @var array */
-	private $data = [];
+	protected $data = [];
 
 
 	/**
@@ -22,20 +22,22 @@ class DropdownButtonItem
 	}
 
 	/**
+	 * @param string $key
+	 * @param string $value
+	 * @return $this
+	 */
+	public function addData(string $key, string $value)
+	{
+		$this->data[$key] = $value;
+		return $this;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function __toString(): string
 	{
 		return (string)$this->toHtml();
-	}
-
-	/**
-	 * @param string $name
-	 * @param string $value
-	 */
-	public function setData(string $name, string $value): void
-	{
-		$this->data[$name] = $value;
 	}
 
 	/**
@@ -45,8 +47,8 @@ class DropdownButtonItem
 	{
 		$el = \Nette\Utils\Html::el('a')->href($this->href)
 			->setText($this->title);
-		foreach ($this->data as $name => $value) {
-			$el->data($name, $value);
+		foreach ($this->data as $key => $value) {
+			$el->data($key, $value);
 		}
 
 		return $el;
