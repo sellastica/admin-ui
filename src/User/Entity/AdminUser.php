@@ -33,6 +33,8 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	protected $visible = true;
 	/** @var int|null @optional */
 	protected $projectId;
+	/** @var string|null @optional */
+	private $externalId;
 
 
 	/**
@@ -197,6 +199,22 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
+	 * @return null|string
+	 */
+	public function getExternalId(): ?string
+	{
+		return $this->externalId;
+	}
+
+	/**
+	 * @param null|string $externalId
+	 */
+	public function setExternalId(?string $externalId): void
+	{
+		$this->externalId = $externalId;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function toArray(): array
@@ -210,6 +228,7 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 				'visible' => $this->visible,
 				'permissions' => json_encode($this->permissions),
 				'projectId' => $this->projectId,
+				'externalId' => $this->externalId,
 			]
 		);
 	}

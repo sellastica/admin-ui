@@ -29,6 +29,8 @@ class AdminUserBuilder implements IBuilder
 	private $visible = true;
 	/** @var int|null */
 	private $projectId;
+	/** @var string|null */
+	private $externalId;
 	/** @var Password|null */
 	private $password;
 	/** @var InvalidLogin */
@@ -150,6 +152,24 @@ class AdminUserBuilder implements IBuilder
 	public function projectId(int $projectId = null)
 	{
 		$this->projectId = $projectId;
+		return $this;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getExternalId()
+	{
+		return $this->externalId;
+	}
+
+	/**
+	 * @param string|null $externalId
+	 * @return $this
+	 */
+	public function externalId(string $externalId = null)
+	{
+		$this->externalId = $externalId;
 		return $this;
 	}
 
