@@ -12,19 +12,19 @@ abstract class AbstractAdminPageFactory
 	private $linkFactory;
 	/** @var ITranslator */
 	private $translator;
-	/** @var \Application\Service\ApplicationService */
+	/** @var \Sellastica\App\Service\ApplicationService */
 	private $applicationService;
 
 
 	/**
 	 * @param LinkFactory $linkFactory
 	 * @param ITranslator $translator
-	 * @param \Application\Service\ApplicationService $applicationService
+	 * @param \Sellastica\App\Service\ApplicationService $applicationService
 	 */
 	public function __construct(
 		LinkFactory $linkFactory,
 		ITranslator $translator,
-		\Application\Service\ApplicationService $applicationService
+		\Sellastica\App\Service\ApplicationService $applicationService
 	)
 	{
 		$this->linkFactory = $linkFactory;
@@ -35,7 +35,6 @@ abstract class AbstractAdminPageFactory
 	/**
 	 * @param string $presenter
 	 * @return AdminPage
-	 * @throws \InvalidArgumentException
 	 */
 	public function fromPresenter(string $presenter): AdminPage
 	{
