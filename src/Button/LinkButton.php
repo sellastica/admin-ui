@@ -44,7 +44,7 @@ class LinkButton extends AbstractButton
 	 */
 	public function toHtml(): Html
 	{
-		$el = Html::el('a', ['class' => ['button btn btn-default']]);
+		$el = Html::el('a', ['class' => ['button btn btn-default btn-outline']]);
 		$el->class[] = $this->class ?: null;
 		$el->href($this->url);
 		if ($this->icon) {

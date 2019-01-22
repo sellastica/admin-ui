@@ -1,0 +1,27 @@
+<div id="{$id}" class="modal fade in {ifset $size}{$size} {/ifset}" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			{* header *}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{ifset $title}
+					<h5 class="modal-title">{_$title}</h5>
+				{/ifset}
+			</div>
+
+			{* body *}
+			<div class="modal-body">
+				{ifset $content}
+					{if !empty($noescape)}
+						{$content|noescape}
+					{else}
+						{$content}
+					{/if}
+				{/ifset}
+			</div>
+		</div>
+	</div>
+</div>
