@@ -1,0 +1,29 @@
+<div class="modal-footer pl-0 pr-0 pt-30 text-left">
+	<div class="row">
+		{if isset($cancelOnly) && $cancelOnly}
+			<div class="col-sm-12 text-right">
+				<a class="btn btn-default btn-outline" data-dismiss="modal">{_admin.globals.close}</a>
+			</div>
+		{else}
+			<div class="col-sm-6">
+				{if !isset($cancel) || $cancel}
+					<a class="btn btn-default btn-outline" data-dismiss="modal">{_admin.globals.cancel}</a>
+				{/if}
+				{if !isset($remove) || $remove}
+					{input remove class => 'btn hollow alert-on-hover'}
+				{/if}
+			</div>
+			<div class="col-sm-6 text-right">
+				{if !isset($submit) || $submit}
+					<button n:name="submit" class="btn btn-primary">
+						{ifset $submitLabel}
+							{$submitLabel}
+						{else}
+							{_admin.globals.buttons.save}
+						{/ifset}
+					</button>
+				{/if}
+			</div>
+		{/if}
+	</div>
+</div>

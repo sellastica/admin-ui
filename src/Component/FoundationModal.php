@@ -3,7 +3,8 @@ namespace Sellastica\AdminUI\Component;
 
 class FoundationModal extends BaseControl
 {
-	public static $footer = __DIR__ . '/FoundationModalFooter.latte';
+	public static $footer = __DIR__ . '/FoundationModalFooter.latte',
+		$bootstrapFooter = __DIR__ . '/FoundationModalBootstrapFooter.latte';
 
 	/** @var bool */
 	private $bootstrap;

@@ -1,20 +1,40 @@
 {if $pagination->getPageCount() > 1}
 	<div class="grid-x grid-margin-x row">
-		<div class="cell small-12 medium-3 large-2 col-sm-12 col-lg-6">
-			{form jumpToPage}
-				<div class="input-group">
-					{input page class => 'input-group-field'}
-					<button n:name="submit" class="button input-group-button">
-						<i class="fa fa-angle-double-right"></i>
-					</button>
-				</div>
-			{/form}
-		</div>
 
-		<div class="cell large-4"></div>
+		{if $presenter->isBetaAdmin()}
 
-		<div class="cell small-12 large-6 col-sm-12 col-lg-6">
-			<ul class="pagination float-right" aria-label="Pagination" data-items-count="{$pagination->getItemCount()}">
+			{* jump to page *}
+			<div class="col-sm-6 col-md-3 col-lg-2">
+				{form jumpToPage}
+					<div class="input-group">
+						{input page class => 'form-control'}
+						<div class="input-group-btn">
+							<button n:name="submit" class="btn btn-primary">
+								<i class="fa fa-angle-double-right"></i>
+							</button>
+						</div>
+					</div>
+				{/form}
+			</div>
+		{else}
+
+			{* jump to page *}
+			<div class="cell small-12 medium-3 large-2">
+				{form jumpToPage}
+					<div class="input-group">
+						{input page class => 'input-group-field'}
+						<button n:name="submit" class="button input-group-button">
+							<i class="fa fa-angle-double-right"></i>
+						</button>
+					</div>
+				{/form}
+			</div>
+			<div class="cell large-4"></div>
+		{/if}
+
+		{* pagination *}
+		<div class="cell small-12 large-6 col-sm-6 col-md-9 col-lg-10">
+			<ul class="pagination float-right mt-0 mb-0 pull-right" aria-label="Pagination" data-items-count="{$pagination->getItemCount()}">
 
 				{* previous page *}
 				{if $pagination->getPreviousPage()}
@@ -45,7 +65,7 @@
 				{var $pages = range($firstPage, $lastPage)}
 				{foreach $pages as $i}
 					{if $pagination->getPage() == $i}
-						<li class="current">
+						<li class="current active">
 							<a href="{$presenter->link('this', ['page' => $i])}">{$i}</a>
 						</li>
 					{else}

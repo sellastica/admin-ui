@@ -55,7 +55,7 @@ class Button extends AbstractButton
 	{
 		$el = Html::el('button', [
 			'type' => $this->type,
-			'class' => ['button'],
+			'class' => ['button btn'],
 			'form' => $this->formId,
 			'id' => $this->id,
 		]);
