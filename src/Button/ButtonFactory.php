@@ -128,4 +128,25 @@ class ButtonFactory
 	{
 		return new DropdownButton($title, $id);
 	}
+
+	/**
+	 * @param string|Html $title
+	 * @param string|null $id
+	 * @return BootstrapDropdownButton
+	 */
+	public function bootstrapDropdown($title, string $id = null): BootstrapDropdownButton
+	{
+		return new BootstrapDropdownButton($title, $id);
+	}
+
+	/**
+	 * @return BootstrapDropdownButton
+	 */
+	public function bootstrapDottedDropdown(): BootstrapDropdownButton
+	{
+		$dropdown = new BootstrapDropdownButton(\Nette\Utils\Html::el('i')->setAttribute('class', 'ti-more'));
+		$dropdown->setClass('btn-outline border-transparent btn-sm');
+
+		return $dropdown;
+	}
 }
