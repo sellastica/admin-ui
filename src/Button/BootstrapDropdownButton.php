@@ -47,6 +47,15 @@ class BootstrapDropdownButton extends LinkButton
 	}
 
 	/**
+	 * @return BootstrapDropdownButton
+	 */
+	public function addDivider(): BootstrapDropdownButton
+	{
+		$this->items[] = null;
+		return $this;
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function hasItems(): bool
@@ -68,7 +77,7 @@ class BootstrapDropdownButton extends LinkButton
 	private function getItemsHtml(): Html
 	{
 		$ul = Html::el('ul', [
-			'class' => 'dropdown-menu ' . $this->dropdownClass,
+			'class' => 'dropdown-menu dropdown-menu-right ' . $this->dropdownClass,
 			'id' => $this->id,
 			'data-dropdown' => true,
 			'data-close-on-click' => 'true',
@@ -77,8 +86,13 @@ class BootstrapDropdownButton extends LinkButton
 			'data-dropdown-in' => 'flipInX'
 		]);
 		foreach ($this->items as $item) {
-			$li = $ul->create('li');
-			$li->addHtml($item->toHtml());
+			if (isset($item)) {
+				$li = $ul->create('li');
+				$li->addHtml($item->toHtml());
+			} else {
+				$ul->create('li')
+					->setAttribute('class', 'divider');
+			}
 		}
 
 		return $ul;

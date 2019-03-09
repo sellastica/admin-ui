@@ -8,7 +8,11 @@ class DropdownButtonItem
 	/** @var string|null */
 	private $href;
 	/** @var bool */
+	private $ajax = false;
+	/** @var bool */
 	private $openInNewWindow = false;
+	/** @var string|null */
+	private $icon;
 	/** @var array */
 	protected $data = [];
 
@@ -25,22 +29,42 @@ class DropdownButtonItem
 
 	/**
 	 * @param bool $openInNewWindow
-	 * @return $this
+	 * @return DropdownButtonItem
 	 */
-	public function openInNewWindow(bool $openInNewWindow = true)
+	public function openInNewWindow(bool $openInNewWindow = true): DropdownButtonItem
 	{
 		$this->openInNewWindow = $openInNewWindow;
 		return $this;
 	}
 
 	/**
+	 * @param bool $ajax
+	 * @return DropdownButtonItem
+	 */
+	public function setAjax(bool $ajax): DropdownButtonItem
+	{
+		$this->ajax = $ajax;
+		return $this;
+	}
+
+	/**
 	 * @param string $key
 	 * @param string $value
-	 * @return $this
+	 * @return DropdownButtonItem
 	 */
-	public function addData(string $key, string $value)
+	public function addData(string $key, string $value): DropdownButtonItem
 	{
 		$this->data[$key] = $value;
+		return $this;
+	}
+
+	/**
+	 * @param string|null $icon
+	 * @return DropdownButtonItem
+	 */
+	public function setIcon(?string $icon): DropdownButtonItem
+	{
+		$this->icon = $icon;
 		return $this;
 	}
 
@@ -57,15 +81,24 @@ class DropdownButtonItem
 	 */
 	public function toHtml(): \Nette\Utils\Html
 	{
-		$el = \Nette\Utils\Html::el('a')->href($this->href)
-			->setText($this->title);
+		$el = \Nette\Utils\Html::el('a')->href($this->href);
 		if ($this->openInNewWindow) {
 			$el->setAttribute('target', '_blank');
+		}
+
+		if ($this->ajax) {
+			$el->setAttribute('class', 'ajax');
 		}
 
 		foreach ($this->data as $key => $value) {
 			$el->data($key, $value);
 		}
+
+		if ($this->icon) {
+			$el->addHtml(\Nette\Utils\Html::el('i')->setAttribute('class', $this->icon));
+		}
+
+		$el->addText($this->title);
 
 		return $el;
 	}
