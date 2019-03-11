@@ -15,6 +15,8 @@ class DropdownButtonItem
 	private $icon;
 	/** @var array */
 	protected $data = [];
+	/** @var array */
+	protected $class = [];
 
 
 	/**
@@ -59,6 +61,16 @@ class DropdownButtonItem
 	}
 
 	/**
+	 * @param string $class
+	 * @return DropdownButtonItem
+	 */
+	public function addClass(string $class): DropdownButtonItem
+	{
+		$this->class[] = $class;
+		return $this;
+	}
+
+	/**
 	 * @param string|null $icon
 	 * @return DropdownButtonItem
 	 */
@@ -86,8 +98,13 @@ class DropdownButtonItem
 			$el->setAttribute('target', '_blank');
 		}
 
+		$class = $this->class;
 		if ($this->ajax) {
-			$el->setAttribute('class', 'ajax');
+			$class[] = 'ajax';
+		}
+
+		if ($class = implode(' ', $class)) {
+			$el->setAttribute('class', $class);
 		}
 
 		foreach ($this->data as $key => $value) {

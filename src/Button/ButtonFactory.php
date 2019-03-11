@@ -37,6 +37,17 @@ class ButtonFactory
 	}
 
 	/**
+	 * @param string $url
+	 * @return LinkButton
+	 */
+	public function back(string $url): LinkButton
+	{
+		return $this->link($this->translator->translate('admin.globals.buttons.back'), $url)
+			->setIcon('fa fa-angle-left mr-10')
+			->setClass('btn-outline');
+	}
+
+	/**
 	 * @param string|Html $title
 	 * @param string $toggleId
 	 * @return LinkButton
