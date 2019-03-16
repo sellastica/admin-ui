@@ -17,6 +17,14 @@ class BootstrapDropdownButton extends LinkButton
 	 */
 	public function __construct($title, string $id = null)
 	{
+		if (is_string($title)) {
+			$el = Html::el();
+			$el = $el->addText($title);
+			$el->create('span')
+				->setAttribute('class', 'caret ml-5');
+			$title = $el;
+		}
+
 		parent::__construct($title);
 
 		$this->id = $id ?? uniqid();
