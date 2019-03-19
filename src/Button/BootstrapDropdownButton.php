@@ -112,7 +112,7 @@ class BootstrapDropdownButton extends LinkButton
 	public function toHtml(): Html
 	{
 		$el = Html::el('div')
-			->setAttribute('class', 'dropdown');
+			->setAttribute('class', 'dropdown inline-block');
 		$el->addHtml(parent::toHtml());
 		if ($this->items) {
 			$el->addHtml($this->getItemsHtml());
