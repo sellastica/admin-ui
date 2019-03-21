@@ -1,5 +1,5 @@
 {if $pagination->getPageCount() > 1}
-	<div class="grid-x grid-margin-x row">
+	<div class="grid-x grid-margin-x row no-gutters">
 
 		{if $presenter->isBetaAdmin()}
 
@@ -9,7 +9,7 @@
 					<div class="input-group">
 						{input page class => 'form-control'}
 						<div class="input-group-btn">
-							<button n:name="submit" class="btn btn-primary">
+							<button n:name="submit" class="btn btn-primary border-right-radius pl-20 pr-20">
 								<i class="fa fa-angle-double-right"></i>
 							</button>
 						</div>
