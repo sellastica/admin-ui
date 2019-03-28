@@ -82,7 +82,7 @@ class BootstrapDropdownButton extends LinkButton
 	/**
 	 * @return Html
 	 */
-	private function getItemsHtml(): Html
+	public function getItemsHtml(): Html
 	{
 		$ul = Html::el('ul', [
 			'class' => 'dropdown-menu dropdown-menu-right ' . $this->dropdownClass,
