@@ -59,6 +59,18 @@ class ButtonFactory
 	}
 
 	/**
+	 * @param string|Html $title
+	 * @param string $toggleId
+	 * @return LinkButton
+	 */
+	public function bootstrapModal($title, string $toggleId): LinkButton
+	{
+		return $this->link($title)
+			->addData('toggle', 'modal')
+			->addData('target', $toggleId);
+	}
+
+	/**
 	 * @param string $url
 	 * @return LinkButton
 	 */
