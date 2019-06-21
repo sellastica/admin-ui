@@ -80,18 +80,18 @@ class BootstrapDropdownButton extends LinkButton
 	}
 
 	/**
+	 * @param string|null $class
 	 * @return Html
 	 */
-	public function getItemsHtml(): Html
+	public function getItemsHtml(string $class = null): Html
 	{
 		$ul = Html::el('ul', [
-			'class' => 'dropdown-menu dropdown-menu-right ' . $this->dropdownClass,
+			'class' => 'dropdown-menu ' . $this->dropdownClass,
 			'id' => $this->id,
 			'data-dropdown' => true,
 			'data-close-on-click' => 'true',
 			'data-v-offset' => 5,
 			'role' => 'menu',
-			'data-dropdown-in' => 'flipInX'
 		]);
 		foreach ($this->items as $item) {
 			if (isset($item)) {
