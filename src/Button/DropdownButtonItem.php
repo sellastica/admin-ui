@@ -43,7 +43,7 @@ class DropdownButtonItem
 	 * @param bool $ajax
 	 * @return DropdownButtonItem
 	 */
-	public function setAjax(bool $ajax): DropdownButtonItem
+	public function setAjax(bool $ajax = true): DropdownButtonItem
 	{
 		$this->ajax = $ajax;
 		return $this;
