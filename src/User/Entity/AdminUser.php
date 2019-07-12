@@ -35,6 +35,8 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	protected $projectId;
 	/** @var string|null @optional */
 	private $externalId;
+	/** @var array @optional */
+	private $closedHelps = [];
 
 
 	/**
@@ -175,6 +177,41 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getClosedHelps(): array
+	{
+		return $this->closedHelps;
+	}
+
+	/**
+	 * @param string $presenter
+	 * @return bool
+	 */
+	public function isHelpClosed(string $presenter): bool
+	{
+		return in_array($presenter, $this->closedHelps);
+	}
+
+	/**
+	 * @param array $closedHelps
+	 */
+	public function setClosedHelps(array $closedHelps): void
+	{
+		$this->closedHelps = $closedHelps;
+	}
+
+	/**
+	 * @param string $presenter
+	 */
+	public function closeHelp(string $presenter): void
+	{
+		if (!in_array($presenter, $this->closedHelps)) {
+			$this->closedHelps[] = $presenter;
+		}
+	}
+
+	/**
 	 * @return int|null
 	 */
 	public function getProjectId(): ?int
@@ -226,7 +263,10 @@ class AdminUser extends Identity implements IIdentity, IProxable, IPayloadable
 				'homepage' => $this->homepage,
 				'role' => $this->role->getRole(),
 				'visible' => $this->visible,
-				'permissions' => json_encode($this->permissions),
+				'permissions' => \Nette\Utils\Json::encode($this->permissions),
+				'closedHelps' => !empty($this->closedHelps)
+					? \Nette\Utils\Json::encode($this->closedHelps)
+					: null,
 				'projectId' => $this->projectId,
 				'externalId' => $this->externalId,
 			]

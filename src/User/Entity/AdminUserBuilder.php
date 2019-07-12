@@ -31,6 +31,8 @@ class AdminUserBuilder implements IBuilder
 	private $projectId;
 	/** @var string|null */
 	private $externalId;
+	/** @var array */
+	private $closedHelps = [];
 	/** @var Password|null */
 	private $password;
 	/** @var InvalidLogin */
@@ -170,6 +172,24 @@ class AdminUserBuilder implements IBuilder
 	public function externalId(string $externalId = null)
 	{
 		$this->externalId = $externalId;
+		return $this;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getClosedHelps(): array
+	{
+		return $this->closedHelps;
+	}
+
+	/**
+	 * @param array $closedHelps
+	 * @return $this
+	 */
+	public function closedHelps(array $closedHelps)
+	{
+		$this->closedHelps = $closedHelps;
 		return $this;
 	}
 
