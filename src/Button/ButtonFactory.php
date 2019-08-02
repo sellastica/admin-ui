@@ -128,6 +128,17 @@ class ButtonFactory
 	}
 
 	/**
+	 * @param string $formId
+	 * @return Button
+	 */
+	public function submitPrimaryBootstrap(string $formId = 'frm-form')
+	{
+		return (new Button($this->translator->translate('admin.globals.buttons.save'), 'submit'))
+			->addClass('btn btn-primary')
+			->setFormId($formId);
+	}
+
+	/**
 	 * @param string $title
 	 * @param string $class
 	 * @return Button
