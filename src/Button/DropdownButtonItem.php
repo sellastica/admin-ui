@@ -115,7 +115,7 @@ class DropdownButtonItem
 			$el->addHtml(\Nette\Utils\Html::el('i')->setAttribute('class', $this->icon));
 		}
 
-		$el->addText($this->title);
+		$el->addHtml($this->title);
 
 		return $el;
 	}

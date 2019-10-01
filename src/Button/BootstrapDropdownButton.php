@@ -55,6 +55,20 @@ class BootstrapDropdownButton extends LinkButton
 	}
 
 	/**
+	 * @param string $title
+	 * @param string $target
+	 * @return DropdownButtonItem
+	 */
+	public function addItemWithModal(string $title, string $target): DropdownButtonItem
+	{
+		$this->items[] = $item = new DropdownButtonItem($title);
+		$item->addData('toggle', 'modal')
+			->addData('target', $target);
+
+		return $item;
+	}
+
+	/**
 	 * @return BootstrapDropdownButton
 	 */
 	public function addDivider(): BootstrapDropdownButton

@@ -179,7 +179,7 @@ class ButtonFactory
 	public function bootstrapDottedDropdown(): BootstrapDropdownButton
 	{
 		$dropdown = new BootstrapDropdownButton(\Nette\Utils\Html::el('i')->setAttribute('class', 'ti-more'));
-		$dropdown->setClass('btn-primary btn-outline border-transparent btn-sm');
+		$dropdown->setClass('btn-primary btn-outline btn-outline-transparent btn-sm');
 
 		return $dropdown;
 	}

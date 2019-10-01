@@ -49,7 +49,9 @@ class AdminUserDao extends Dao
 		$contact = new Contact($data->firstName, $data->lastName, new Email($data->email), $data->phone);
 		$data->password = new Password($data->password);
 		$invalidLogin = new InvalidLogin($data->lastInvalidLogin, $data->invalidLoginCount);
-		$data->permissions = \Nette\Utils\Json::decode($data->permissions, \Nette\Utils\Json::FORCE_ARRAY);
+		$data->permissions = isset($data->permissions)
+			? \Nette\Utils\Json::decode($data->permissions, \Nette\Utils\Json::FORCE_ARRAY)
+			: [];
 		$data->closedHelps = isset($data->closedHelps)
 			? \Nette\Utils\Json::decode($data->closedHelps, \Nette\Utils\Json::FORCE_ARRAY)
 			: [];
