@@ -23,7 +23,7 @@ class DropdownButtonItem
 	 * @param string|\Nette\Utils\Html $title
 	 * @param string|null $href
 	 */
-	public function __construct(string $title, string $href = null)
+	public function __construct($title, string $href = null)
 	{
 		$this->title = $title;
 		$this->href = $href;

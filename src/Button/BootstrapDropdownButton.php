@@ -48,7 +48,7 @@ class BootstrapDropdownButton extends LinkButton
 	 * @param string|null $href
 	 * @return DropdownButtonItem
 	 */
-	public function addItem(string $title, string $href = null): DropdownButtonItem
+	public function addItem($title, string $href = null): DropdownButtonItem
 	{
 		$this->items[] = $item = new DropdownButtonItem($title, $href);
 		return $item;
